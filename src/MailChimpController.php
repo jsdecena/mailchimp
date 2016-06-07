@@ -10,14 +10,18 @@ class MailChimpController extends Controller
 {
     protected $mailchimp;
 
+    protected $listId;
+
     /**
      * Pull the Mailchimp-instance from the IoC-container.
      */
     function __construct()
     {
-    	$mc = new Mailchimp(config('mailchimp.apikey'));
+    	$mc = new Mailchimp(env('MAILCHIMP_API_KEY', 'GenerateYourAPIkeyAndReplaceThis'));
 
         $this->mailchimp = $mc;
+
+        $this->listId = env('MAILCHIMP_LIST_ID', 'GetYourListIDAndReplaceThis');
     }
 
 	public function store(Request $request)
@@ -27,7 +31,7 @@ class MailChimpController extends Controller
         	$response = $this->mailchimp
 					                ->lists
 					                ->subscribe(
-					                    config('mailchimp.listId'),
+					                    $this->listId,
 					                    ['email' => $request->input('email')]
 					                );
                 
