@@ -19,10 +19,6 @@ class MailChimpServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../config/mailchimp.php' => config_path('mailchimp.php')
-        ], 'config');
-
-        $this->publishes([
             __DIR__ . '/../views/mailchimp.blade.php' => base_path('resources/views/mailchimp.blade.php')
         ], 'view');
     }

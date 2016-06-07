@@ -7,7 +7,7 @@
 ```json
 
 	"require": {
-	    "jsd/mailchimp": "1.4"
+	    "jsd/mailchimp": "1.5"
 	}
 
 ```
