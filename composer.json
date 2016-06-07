@@ -1,0 +1,15 @@
+{
+    "name": "jsd/mailchimp",
+    "description": "MailChimp subscription",
+    "require": {
+        "mailchimp/mailchimp": "^2.0",
+        "laravelcollective/html": "~5.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeff Simons Decena",
+            "email": "jeff.decena@yahoo.com"
+        }
+    ]
+}
