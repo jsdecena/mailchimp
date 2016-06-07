@@ -2,8 +2,7 @@
     "name": "jsd/mailchimp",
     "description": "MailChimp subscription",
     "require": {
-        "mailchimp/mailchimp": "^2.0",
-        "laravelcollective/html": "~5.0"
+        "mailchimp/mailchimp": "^2.0"
     },
 	"autoload": {
 	        "psr-4": {
