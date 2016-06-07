@@ -7,7 +7,7 @@
 ```json
 
 	"require": {
-	    "jsd/mailchimp": "1.3"
+	    "jsd/mailchimp": "1.4"
 	}
 
 ```
@@ -30,4 +30,10 @@
 
 `@include('mailchimp')`
 
-- Step5: Enjoy!
+- Step5: Set the variable in your `.env` file
+
+`MAILCHIMP_API_KEY=YourMailChimpAPIKey`
+
+`MAILCHIMP_LIST_ID=YourMailChimpListId`
+
+- Step6: Enjoy!
