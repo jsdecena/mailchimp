@@ -1,3 +1,3 @@
 <?php
 
-Route::post('mailchimp', ['as' => 'mailchimp.store', 'uses' => 'Jsd\MailChimp\MailChimpController@store']);
+Route::post('mailchimp', ['as' => 'mailchimp.store', 'uses' => 'Jsdecena\MailChimp\MailChimpController@store']);

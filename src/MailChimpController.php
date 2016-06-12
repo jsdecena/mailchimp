@@ -1,6 +1,6 @@
 <?php
 
-namespace Jsd\MailChimp;
+namespace Jsdecena\MailChimp;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

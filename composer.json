@@ -1,12 +1,12 @@
 {
-    "name": "jsd/mailchimp",
+    "name": "jsdecena/mailchimp",
     "description": "MailChimp subscription",
     "require": {
         "mailchimp/mailchimp": "^2.0"
     },
 	"autoload": {
 	        "psr-4": {
-	            "Jsd\\MailChimp\\": "src/"
+	            "Jsdecena\\MailChimp\\": "src/"
 	        }
 	    },    
     "license": "MIT",

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jsd\MailChimp;
+namespace Jsdecena\MailChimp;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -19,8 +19,8 @@ class MailChimpServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/../views/mailchimp.blade.php' => base_path('resources/views/mailchimp.blade.php')
-        ], 'view');
+            __DIR__.'/views' => resource_path('views/vendor/mailchimp/mailchimp.blade.php')
+        ]);
     }
 
     /**
@@ -32,6 +32,5 @@ class MailChimpServiceProvider extends ServiceProvider
     public function register()
     {
         include __DIR__.'/routes.php';
-        $this->app->make('Jsd\MailChimp\MailChimpController');
     }    
 }
