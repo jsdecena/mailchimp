@@ -39,4 +39,4 @@
 
 ## Overriding the template file?
 
-- Yes you can. Override the file in /resources/views/vendor/mailchimp/mailchimp.blade.php
+- Yes you can. Override the file in `/resources/views/vendor/mailchimp/mailchimp.blade.php`
