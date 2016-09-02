@@ -39,4 +39,50 @@
 
 ## Overriding the template file?
 
+
 - Yes you can. Override the file in `/resources/views/vendor/mailchimp/mailchimp.blade.php`
+
+
+## What is new with 1.6?
+
+
+- Recently, I learned the power of doing TDD (test driven development) on applications using PHPUnit. So now, I am already throwing exception messages whenever there is an issue on the request!
+
+## What are the exception messages we are returning?
+
+
+- Email that MailChimp does not allow
+
+```json
+  {
+    "error": "List_RoleEmailMember: test@test.com is an invalid email address and cannot be imported."
+  }
+```
+
+- Wrong API key provided
+
+```json
+  {
+    "error":"Invalid MailChimp API key: 1112e36f7f44ef4cc3c5a584747abb05be"
+  }
+```
+
+- Wrong List ID provided
+
+```json
+  {
+    "error":"Invalid MailChimp List ID: accf6b0a0e111"
+  }
+```
+
+## And if the subscription is successful, it will return the email, euid, leid on the data object
+
+```json
+  {
+    "data": {
+      "email":"super@mario.com",
+      "euid":"b0b8fdacbd",
+      "leid":"430369209"
+    }
+  }
+```
