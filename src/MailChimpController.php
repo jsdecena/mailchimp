@@ -8,12 +8,16 @@ use Exception;
 
 class MailChimpController extends Controller
 {
-	public function store(Request $request)
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function store(Request $request)
 	{
         try {
 
-            $mc = new MC(env('MAILCHIMP_API_KEY'));
-            $response = $mc->subscribe(env('MAILCHIMP_LIST_ID'), $request->input('email'));
+            $mc = new MC;
+            $response = $mc->subscribe($request->input('email'));
 
             return response()->json(['data' => $response ]);
 

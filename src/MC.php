@@ -11,12 +11,11 @@ class MC {
     public $mailchimp;
 
     /**
-     * MC constructor.
-     * @param string $api
+     * MC constructor
      */
-    function __construct(string $api)
+    function __construct()
     {
-        $this->mailchimp = new Mailchimp($api);
+        $this->mailchimp = new Mailchimp(env('MAILCHIMP_API_KEY'));
     }
 
     /**
@@ -33,15 +32,14 @@ class MC {
     }
 
     /**
-     * @param string $listId
      * @param string $email
      * @return \associative_array
      * @throws Exception
      */
-    public function subscribe(string $listId, string $email)
+    public function subscribe(string $email)
     {
         try {
-            return $this->mailchimp->lists->subscribe($listId, ['email' => $email]);
+            return $this->mailchimp->lists->subscribe(env('MAILCHIMP_LIST_ID'), ['email' => $email]);
         } catch(Exception $e) {
             throw new Exception($e->getMessage());
         }
