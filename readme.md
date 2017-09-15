@@ -12,10 +12,12 @@
 ```json
 
 	"require": {
-	    "jsdecena/mailchimp": "1.6.*"
+	    "jsdecena/mailchimp": "^7.0"
 	}
-
 ```
+Or issue this command:
+
+`composer require jsdecena/mailchimp`
 
 - Step2: Add this to your `config/app.php` in `providers` array
 

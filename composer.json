@@ -1,10 +1,19 @@
 {
   "name": "jsdecena/mailchimp",
   "description": "MailChimp subscription",
+  "keywords": ["e-commerce", "ecommerce", "shopping-cart", "laravel", "laracom", "laravel-ecommerce", "shop", "laravel5", "framework", "package"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jeff Simons Decena",
+      "email": "jeff.decena@yahoo.com"
+    }
+  ],
+  "type": "project",
   "require": {
     "mailchimp/mailchimp": "^2.0",
     "vlucas/phpdotenv": "~2.2",
-    "illuminate/http": "^5.5"
+    "illuminate/http": "^5.3"
   },
   "autoload": {
     "psr-4": {
@@ -15,12 +24,5 @@
     "fzaninotto/faker": "~1.4",
     "mockery/mockery": "0.9.*",
     "phpunit/phpunit": "~4.0"
-  },
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Jeff Simons Decena",
-      "email": "jeff.decena@yahoo.com"
-    }
-  ]
+  }
 }
