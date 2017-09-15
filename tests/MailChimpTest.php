@@ -4,16 +4,14 @@ use Jsdecena\MailChimp\MC;
 
 class MailChimpTest extends PHPUnit_Framework_TestCase
 {
-    private $faker;
-    private $apiKey = '12e36f7f44ef4cc3c5a584747abb05be-us1';
+    public $faker;
 
-    function __construct()
+    public function setUp()
     {
-        parent::__construct();
+        parent::setUp();
 
         $this->faker = Faker\Factory::create();
     }
-
     /**
      * Retrieve all of the lists defined for your user account and throws an exception
      *
@@ -21,57 +19,46 @@ class MailChimpTest extends PHPUnit_Framework_TestCase
      */
     public function it_retrieves_all_the_lists_in_the_account()
     {
-        $mailchimp = new MC($this->apiKey);
-        $mailchimp->getLists();
+        $mailchimp = new MC(getenv('MAILCHIMP_API_KEY'));
+        $list = $mailchimp->getLists();
 
-        $this->assertInstanceOf(MC::class, $mailchimp);
+        $this->assertArrayHasKey('total', $list);
+        $this->assertArrayHasKey('data', $list);
     }
 
-    /**
-     * Retrieve all of the lists defined for your user account and throws an exception
-     * @expectedException Exception
-     * @expectedExceptionMessage Invalid MailChimp API key: unknown
-     *
-     * @test
-     */
+    /** @test */
     public function it_errors_when_setting_an_invalid_api_key_to_get_the_lists()
     {
+        $this->getExpectedException(Exception::class);
+
         $mailchimp = new MC('unknown');
         $mailchimp->getLists();
     }
 
-    /**
-     * @expectedException Exception
-     * @expectedExceptionMessage Invalid MailChimp List ID: 818181818181
-     *
-     * @test
-     */
+    /** @test */
     public function it_errors_when_the_list_id_is_invalid()
     {
-        $mailchimp = new MC($this->apiKey);
-        $mailchimp->subscribe('818181818181', $this->faker->email);
+        $this->getExpectedException(Exception::class);
+
+        $mailchimp = new MC(getenv('MAILCHIMP_API_KEY'));
+        $mailchimp->subscribe($this->faker->email);
     }
 
-    /**
-     * @expectedException Exception
-     * @expectedExceptionMessage List_RoleEmailMember: email@email.com is an invalid email address and cannot be imported.
-     *
-     * @test
-     */
+    /** @test */
     public function it_errors_when_the_email_is_not_allowed()
     {
-        $mailchimp = new MC($this->apiKey);
-        $mailchimp->subscribe('accf6b0a0e', 'email@email.com');
+        $this->getExpectedException(Exception::class);
+
+        $mailchimp = new MC(getenv('MAILCHIMP_API_KEY'));
+        $mailchimp->subscribe($this->faker->email);
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_correctly_subscribes_the_email_to_the_list()
     {
         $email = $this->faker->email;
-        $mailchimp = new MC($this->apiKey);
-        $response = $mailchimp->subscribe('accf6b0a0e', $email);
+        $mailchimp = new MC(getenv('MAILCHIMP_API_KEY'));
+        $response = $mailchimp->subscribe($email);
 
         $this->assertEquals($email, $response['email']);
     }

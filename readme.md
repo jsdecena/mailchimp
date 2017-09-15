@@ -1,3 +1,8 @@
+[![Build Status](https://travis-ci.org/jsdecena/mailchimp.svg?branch=master)](https://travis-ci.org/jsdecena/mailchimp)
+[![Latest Stable Version](https://poser.pugx.org/jsdecena/mailchimp/v/stable)](https://packagist.org/packages/jsdecena/mailchimp)
+[![Total Downloads](https://poser.pugx.org/jsdecena/mailchimp/downloads)](https://packagist.org/packages/jsdecena/mailchimp)
+[![License](https://poser.pugx.org/jsdecena/mailchimp/license)](https://packagist.org/packages/jsdecena/mailchimp)
+
 ## MailChimp API v2.0 Laravel PHP Example
 
 ## Installation

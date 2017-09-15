@@ -2,6 +2,7 @@
 
 namespace Jsdecena\MailChimp;
 
+use Jsdecena\MailChimp\Exceptions\AlreadySubscribed;
 use Mailchimp;
 use Exception;
 use Mailchimp_Email_AlreadySubscribed;
@@ -15,7 +16,7 @@ class MC {
      */
     function __construct()
     {
-        $this->mailchimp = new Mailchimp(env('MAILCHIMP_API_KEY'));
+        $this->mailchimp = new Mailchimp(getenv('MAILCHIMP_API_KEY'));
     }
 
     /**
@@ -39,7 +40,9 @@ class MC {
     public function subscribe(string $email)
     {
         try {
-            return $this->mailchimp->lists->subscribe(env('MAILCHIMP_LIST_ID'), ['email' => $email]);
+            return $this->mailchimp->lists->subscribe(getenv('MAILCHIMP_LIST_ID'), ['email' => $email]);
+        } catch (Mailchimp_Email_AlreadySubscribed $e) {
+            throw new AlreadySubscribed($e->getMessage(), $e);
         } catch(Exception $e) {
             throw new Exception($e->getMessage());
         }

@@ -2,7 +2,8 @@
   "name": "jsdecena/mailchimp",
   "description": "MailChimp subscription",
   "require": {
-    "mailchimp/mailchimp": "^2.0"
+    "mailchimp/mailchimp": "^2.0",
+    "vlucas/phpdotenv": "~2.2"
   },
   "autoload": {
     "psr-4": {
