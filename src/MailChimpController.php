@@ -16,13 +16,13 @@ class MailChimpController
         try {
 
             $mc = new MC;
-            $response = $mc->subscribe($request->input('email'));
+            $mc->subscribe($request->input('email'));
 
-            return response()->json(['data' => $response ]);
+            return $request->session()->flash('message', 'Subscription successful!');
 
         } catch (Exception $e) {
 
-            return response()->json(['error' => $e->getMessage()]);
+            return $request->session()->flash('error', $e->getMessage());
         }
 	}
 }
