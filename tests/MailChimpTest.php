@@ -8,7 +8,11 @@ class MailChimpTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        parent::setUp();
+        $env_file_path = __DIR__ . '/../';
+        if (file_exists($env_file_path . '.env')) {
+            $dotenv = new Dotenv\Dotenv($env_file_path);
+            $dotenv->load();
+        }
 
         $this->faker = Faker\Factory::create();
     }
@@ -19,7 +23,7 @@ class MailChimpTest extends PHPUnit_Framework_TestCase
      */
     public function it_retrieves_all_the_lists_in_the_account()
     {
-        $mailchimp = new MC(getenv('MAILCHIMP_API_KEY'));
+        $mailchimp = new MC;
         $list = $mailchimp->getLists();
 
         $this->assertArrayHasKey('total', $list);
@@ -40,7 +44,7 @@ class MailChimpTest extends PHPUnit_Framework_TestCase
     {
         $this->getExpectedException(Exception::class);
 
-        $mailchimp = new MC(getenv('MAILCHIMP_API_KEY'));
+        $mailchimp = new MC;
         $mailchimp->subscribe($this->faker->email);
     }
 
@@ -49,7 +53,7 @@ class MailChimpTest extends PHPUnit_Framework_TestCase
     {
         $this->getExpectedException(Exception::class);
 
-        $mailchimp = new MC(getenv('MAILCHIMP_API_KEY'));
+        $mailchimp = new MC;
         $mailchimp->subscribe($this->faker->email);
     }
 
@@ -57,7 +61,7 @@ class MailChimpTest extends PHPUnit_Framework_TestCase
     public function it_correctly_subscribes_the_email_to_the_list()
     {
         $email = $this->faker->email;
-        $mailchimp = new MC(getenv('MAILCHIMP_API_KEY'));
+        $mailchimp = new MC;
         $response = $mailchimp->subscribe($email);
 
         $this->assertEquals($email, $response['email']);

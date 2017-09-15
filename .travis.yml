@@ -5,6 +5,10 @@ php:
   - 7.0
   - 7.1
 
+env:
+  - MAILCHIMP_API_KEY=12e36f7f44ef4cc3c5a584747abb05be-us1
+  - MAILCHIMP_LIST_ID=accf6b0a0e
+
 before_script:
   - composer self-update
   - composer install --no-interaction

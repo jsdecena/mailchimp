@@ -3,10 +3,9 @@
 namespace Jsdecena\MailChimp;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Exception;
 
-class MailChimpController extends Controller
+class MailChimpController
 {
     /**
      * @param Request $request
